@@ -53,6 +53,7 @@ export const UserPage = () => {
       </For>
       <div>
         <button onClick={getAllUsersCaller}>Log Users</button>
+        <button onClick={createUserCaller}>Create User</button>
         <div>
           <div>
               {/* <CreateUser 
