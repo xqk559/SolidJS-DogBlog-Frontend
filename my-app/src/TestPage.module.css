@@ -1,0 +1,13 @@
+.formButton {
+    align-self: center;
+}
+
+.formElement {
+    padding: 10px;
+}
+
+.loginForm {
+    align-items: self-end;
+    display: inline-flex;
+    flex-direction: column;
+}

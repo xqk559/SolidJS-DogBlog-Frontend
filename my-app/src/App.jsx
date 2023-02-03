@@ -2,6 +2,7 @@ import Header from "./components/Header";
 import {Routes, Route} from '@solidjs/router';
 import Home from "./pages/Home";
 import LikedPets from "./pages/LikedPets";
+import TestPage from "./pages/TestPage.jsx";
 import UserPage from "./pages/UserPage";
 import { createEffect, createSignal } from "solid-js";
 
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route element={<Home />} end path='/' />
         <Route element={<LikedPets />} path='/Likedpets' />
+        <Route element={<TestPage />} path='/TestPage' />
         <Route element={<UserPage />} path='/UserPage' />
       </Routes>
     </div>
