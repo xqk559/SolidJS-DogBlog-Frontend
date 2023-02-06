@@ -1,0 +1,23 @@
+.likeButton {
+    background-color: purple;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    margin: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.unlikeButton {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    margin: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}

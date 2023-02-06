@@ -1,13 +1,20 @@
 import { For } from "solid-js";
 import { pets } from "../App";
 import PetCard from "../components/PetCard"
+import { Motion } from "@motionone/solid";
 
 const Home = () => {
     return (
       <div>
-        <h2>List of Awesome Pets</h2>
         <For each={pets()}>
-            {(pet => <PetCard pet={pet} />)}
+            {(pet => 
+              <Motion 
+                animate={{ x: [0, 100, 50] }}
+                transition={{ x: { offset: [0, 0.25, 1] } }}
+              >
+                <PetCard pet={pet} />
+              </Motion>
+            )}
         </For>
       </div>
     )

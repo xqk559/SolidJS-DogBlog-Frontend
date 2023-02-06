@@ -1,15 +1,19 @@
 import { UserPage } from "./UserPage";
 import styles from '../TestPage.module.css'
+import { PetCardAnimation } from '../animations/petCardAnimation'
+import { TestAnimation } from '../animations/testAnimation'
 
-const SubForm = () => {
-	const formDataArray = ($('#loginForm').serializeArray());
-	let formDataObject = {};
-	const data = formDataArray.forEach(element => {
-		console.log(element.value);
-		element.value
-	});
-	console.log(data);
+async function SubForm() {
+  const formDataArray = ($('#loginForm').serializeArray());
+  let formDataObject = {};
+  const data = formDataArray.forEach(element => {
+    console.log(element.value);
+    element.value
+  });
+  // data.push();
 
+  console.log(formDataArray);
+  console.log(data);
   const testUser = {
     'id':1, 
     'firstName':'', 
@@ -17,23 +21,20 @@ const SubForm = () => {
     'email':'', 
     'password':''
   }
-
-  $.ajax({
-    url: 'http://localhost:8080/api/login',
-    type: 'post',
-	  contentType: "application/json",
-    body: testUser,
-    success: function(){
-        alert("worked");
-    }
-  });
+  const response = await fetch('http://localhost:8080/api/login', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(testUser)
+    })
+  return await response.json();
 }
 
 const TestPage = () => {
 	return (
 		<div>
 			<div style="text-align: center">
-				<h1>Admin Login</h1>
+      <PetCardAnimation />
+        <h1>Login</h1>
 				<form name="loginForm" id="loginForm" class={styles.loginForm}>
 					<div class={styles.formElement}>
 						<label for="email" class={styles.formElement}>Email:</label>

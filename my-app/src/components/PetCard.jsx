@@ -1,4 +1,5 @@
 import { cutePets, setCutePets } from "../pages/LikedPets";
+import styles from '../PetCard.module.css'
 
 const likePet = (pet) => {
   setCutePets([pet, ...cutePets()]);
@@ -24,11 +25,11 @@ const PetCard = ({pet}) => {
       </div>
       <div class="card-footer">
       {petIsCute(pet.id) ? (
-          <button class="btn btn-danger" onclick={() => unLikePet(pet.id)}>
+          <button class={styles.unlikeButton} onclick={() => unLikePet(pet.id)}>
             UnLike
           </button>
         ) : (
-          <button class="btn btn-primary" onclick={() => likePet(pet)}>
+          <button class={styles.likeButton} onclick={() => likePet(pet)}>
             Like
           </button>
         )}
