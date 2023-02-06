@@ -1,7 +1,6 @@
-import { UserPage } from "./UserPage";
-import styles from '../TestPage.module.css'
-import { PetCardAnimation } from '../animations/petCardAnimation'
-import { TestAnimation } from '../animations/testAnimation'
+import { UserPage } from "./../UserPage/UserPage";
+import styles from './Login.module.css'
+import { PetCardAnimation } from '../../animations/petCardAnimation'
 
 async function SubForm() {
   const formDataArray = ($('#loginForm').serializeArray());
@@ -29,7 +28,7 @@ async function SubForm() {
   return await response.json();
 }
 
-const TestPage = () => {
+const Login = () => {
 	return (
 		<div>
 			<div style="text-align: center">
@@ -61,4 +60,4 @@ const TestPage = () => {
 	)
 }
   
-export default TestPage;
+export default Login;

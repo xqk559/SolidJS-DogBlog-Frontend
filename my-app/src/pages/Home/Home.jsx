@@ -1,6 +1,6 @@
 import { For } from "solid-js";
-import { pets } from "../App";
-import PetCard from "../components/PetCard"
+import { pets } from "../../App";
+import PetCard from "../../components/PetCard/PetCard"
 import { Motion } from "@motionone/solid";
 
 const Home = () => {

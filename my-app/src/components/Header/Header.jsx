@@ -1,17 +1,17 @@
 import { NavLink } from "@solidjs/router";
-import { cutePets } from "../pages/LikedPets";
-import logo from '../assets/DogBlog.jpg'
-import styles from '../Header.module.css'
+import { cutePets } from "../../pages/LikedPets/LikedPets";
+import logo from '../../assets/DogBlog.jpg'
+import styles from './Header.module.css'
 
 const Header = () => {
   return (
     <div>
-      <a href="http://127.0.0.1:3000/">
+      <NavLink href="/">
         <img src={logo} alt="DogBlog.jpg"/>
-      </a>
+      </NavLink>
       <div class={styles.navigationSection}>
         <small class={styles.button}><NavLink href="/likedpets">Liked Pets {cutePets().length}</NavLink></small>
-        <button class={styles.button} type="button" onclick="location.href = 'http://127.0.0.1:3000/TestPage';">Login</button>
+        <small class={styles.button}><NavLink href="/login">Login</NavLink></small>
       </div>
     </div>
   )

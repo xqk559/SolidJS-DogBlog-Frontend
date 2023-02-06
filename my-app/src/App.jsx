@@ -1,9 +1,9 @@
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import {Routes, Route} from '@solidjs/router';
-import Home from "./pages/Home";
-import LikedPets from "./pages/LikedPets";
-import TestPage from "./pages/TestPage.jsx";
-import UserPage from "./pages/UserPage";
+import Home from "./pages/Home/Home";
+import LikedPets from "./pages/LikedPets/LikedPets";
+import Login from "./pages/Login/Login";
+import UserPage from "./pages/UserPage/UserPage";
 import { createEffect, createSignal } from "solid-js";
 
 const [pets, setPets] = createSignal([])
@@ -22,7 +22,7 @@ function App() {
       <Routes>
         <Route element={<Home />} end path='/' />
         <Route element={<LikedPets />} path='/Likedpets' />
-        <Route element={<TestPage />} path='/TestPage' />
+        <Route element={<Login />} path='/Login' />
         <Route element={<UserPage />} path='/UserPage' />
       </Routes>
     </div>

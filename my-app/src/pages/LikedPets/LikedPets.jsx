@@ -1,5 +1,5 @@
 import { createSignal, For } from "solid-js";
-import PetCard from "../components/PetCard";
+import PetCard from "../../components/PetCard/PetCard";
 
 const [cutePets, setCutePets] = createSignal([])
 

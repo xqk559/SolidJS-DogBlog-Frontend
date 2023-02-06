@@ -1,9 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import { Header } from './components/Header'
-// import { Users } from './components/Users'
-// import { DisplayBoard } from './components/DisplayBoard'
-// import CreateUser from './components/CreateUser'
-import { getAllUsers, createUser } from '../services/services'
+import { getAllUsers, createUser } from '../../services/services'
 import { createSignal, For } from 'solid-js';
 
 const [user, setUser] = createSignal({})

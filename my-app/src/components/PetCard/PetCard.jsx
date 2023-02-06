@@ -1,5 +1,5 @@
-import { cutePets, setCutePets } from "../pages/LikedPets";
-import styles from '../PetCard.module.css'
+import { cutePets, setCutePets } from "../../pages/LikedPets/LikedPets";
+import styles from './PetCard.module.css'
 
 const likePet = (pet) => {
   setCutePets([pet, ...cutePets()]);
