@@ -12,7 +12,6 @@ createEffect(async () => {
   const res = await fetch(`http://pets-v2.dev-apis.com/pets`)
   const json = await res.json()
   setPets(json.pets.reverse())
-  console.log(json.pets)
 })
 
 function App() {

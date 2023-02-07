@@ -9,7 +9,6 @@ const [numberOfUsers, setNumberOfUsers] = createSignal(0)
 const createUserCaller = (e: any) => {
     createUser([])
     .then((response: any) => {
-        console.log(response);
         setNumberOfUsers(numberOfUsers() + 1)
     });
     setUser({})
@@ -18,7 +17,6 @@ const createUserCaller = (e: any) => {
 const getAllUsersCaller = () => {
   getAllUsers()
     .then((users: never[]) => {
-      console.log(users)
       setUsers(users) 
       setNumberOfUsers(users.length)
     });
