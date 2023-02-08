@@ -9,9 +9,9 @@ import { createEffect, createSignal } from "solid-js";
 const [pets, setPets] = createSignal([])
 
 createEffect(async () => {
-  const res = await fetch(`http://pets-v2.dev-apis.com/pets`)
-  const json = await res.json()
-  setPets(json.pets.reverse())
+  const response = await fetch(`http://localhost:8080/api/pets`)
+  const responseJson = await response.json() 
+  setPets(responseJson)
 })
 
 function App() {

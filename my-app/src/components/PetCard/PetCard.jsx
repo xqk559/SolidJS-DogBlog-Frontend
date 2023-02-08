@@ -1,5 +1,6 @@
 import { cutePets, setCutePets } from "../../pages/LikedPets/LikedPets";
 import styles from './PetCard.module.css'
+import { Motion } from "@motionone/solid";
 
 const likePet = (pet) => {
   setCutePets([pet, ...cutePets()]);
@@ -17,24 +18,30 @@ const petIsCute = (petId) => {
 
 const PetCard = ({pet}) => {
   return (
-    <div class="card mb-3">
-      <div class="card-header">Pet Name is {pet.name} a {pet.animal}</div>
-      <div class="card-body">
-        <p>{pet.city}, {pet.state}</p>
-        <p class="card-text">{pet.description}</p>
+    <Motion
+      initial={{ opacity: 0, scale: 0.6 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.6 }}
+      transition={{ duration: 0.3 }}
+    >
+      <div class="card mb-3">
+        <div class="card-header">{pet.animal_NAME} the {pet.animal_TYPE}</div>
+        <div class="card-body">
+          <p class="card-text">{pet.animal_DESCRIPTION}</p>
+        </div>
+        <div class="card-footer">
+        {petIsCute(pet.id) ? (
+            <button class={styles.unlikeButton} onclick={() => unLikePet(pet.id)}>
+              UnLike
+            </button>
+          ) : (
+            <button class={styles.likeButton} onclick={() => likePet(pet)}>
+              Like
+            </button>
+          )}
+        </div>
       </div>
-      <div class="card-footer">
-      {petIsCute(pet.id) ? (
-          <button class={styles.unlikeButton} onclick={() => unLikePet(pet.id)}>
-            UnLike
-          </button>
-        ) : (
-          <button class={styles.likeButton} onclick={() => likePet(pet)}>
-            Like
-          </button>
-        )}
-      </div>
-    </div>
+    </Motion>
   )
 }
 

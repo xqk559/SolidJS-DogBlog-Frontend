@@ -22,52 +22,18 @@ const getAllUsersCaller = () => {
     });
 }
 
-// const onChangeForm = (e: { target: { name: string; value: any; }; }) => {
-//     let user = user()
-//     if (e.target.name === 'firstname') {
-//         user.firstName = e.target.value;
-//     } else if (e.target.name === 'lastname') {
-//         user.lastName = e.target.value;
-//     } else if (e.target.name === 'email') {
-//         user.email = e.target.value;
-//     }
-//     setUser(user)
-// }
-
 export const UserPage = () => {  
   return (
     <div>
-      {/* <Header></Header> */}
       USERS:
-      <For each={users()}>{user => <li>
-        <a target="_blank" href="">
+      <For each={users()}>{user => 
+        <li>
           {user['firstName']}
-        </a>
-      </li>}
+        </li>}
       </For>
       <div>
         <button onClick={getAllUsersCaller}>Log Users</button>
         <button onClick={createUserCaller}>Create User</button>
-        <div>
-          <div>
-              {/* <CreateUser 
-                user={user}
-                onChangeForm={this.onChangeForm}
-                createUser={this.createUser}
-                >
-              </CreateUser> */}
-          </div>
-          <div>
-              {/* <DisplayBoard
-                numberOfUsers={numberOfUsers}
-                getAllUsers={this.getAllUsers}
-              >
-              </DisplayBoard> */}
-          </div>
-        </div>
-      </div>
-      <div>
-        {/* <Users users={users}></Users> */}
       </div>
     </div>
   );

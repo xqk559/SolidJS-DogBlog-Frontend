@@ -5,7 +5,7 @@ import { Motion } from "@motionone/solid";
 
 const Home = () => {
     return (
-      <div>
+      <div style="overflow: hidden;">
         <For each={pets()}>
             {(pet => 
               <Motion 

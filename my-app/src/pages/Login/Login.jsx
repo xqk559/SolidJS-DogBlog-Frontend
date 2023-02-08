@@ -1,6 +1,6 @@
 import { UserPage } from "./../UserPage/UserPage";
 import styles from './Login.module.css'
-import { PetCardAnimation } from '../../animations/petCardAnimation'
+import { Motion } from "@motionone/solid";
 
 async function SubForm() {
   const formDataArray = ($('#loginForm').serializeArray());
@@ -31,30 +31,27 @@ async function SubForm() {
 const Login = () => {
 	return (
 		<div>
-			<div style="text-align: center">
-      <PetCardAnimation />
-        <h1>Login</h1>
-				<form name="loginForm" id="loginForm" class={styles.loginForm}>
-					<div class={styles.formElement}>
-						<label for="email" class={styles.formElement}>Email:</label>
-						<input name="email" size="30"/>
-					</div>
-					<div class={styles.formElement}>
-						<label for="password" class={styles.formElement}>Password:</label>
-						<input type="password" name="password" size="30"/>
-					</div>
-					<div class={styles.formElement}>
-						<label for="FirstName" class={styles.formElement}>First Name:</label>
-						<input name="FirstName" size="30"/>
-					</div>
-					<div class={styles.formElement}>
-						<label for="LastName" class={styles.formElement}>Last Name:</label>
-						<input type="LastName" name="LastName" size="30"/>
-					</div>            
-						<br>${message}</br>           
-						<button class={styles.formButton} type="button" onclick={SubForm}>Login</button>
-				</form>
-			</div>
+      <Motion
+        initial={{ opacity: 0, scale: 0.6 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.6 }}
+        transition={{ duration: 0.3 }}
+      >
+        <div class={styles.loginPage}>
+            <h1 class={styles.purple}>Login</h1>
+          <form name="loginForm" id="loginForm" class={styles.loginForm}>
+            <div class={styles.formElement}>
+              <label for="email" class={styles.formElement}>Email:</label>
+              <input name="email" size="30"/>
+            </div>
+            <div class={styles.formElement}>
+              <label for="password" class={styles.formElement}>Password:</label>
+              <input type="password" name="password" size="30"/>
+            </div>    
+            <button class={styles.formButton} type="button" onclick={SubForm}>Login</button>
+          </form>
+        </div>
+      </Motion>
 			<UserPage />
 		</div>
 	)
