@@ -1,22 +1,24 @@
-import { createSignal, For } from "solid-js";
-import PetCard from "../../components/PetCard/PetCard";
+import { createSignal, For, createEffect } from "solid-js";
+import PetCard, { unlikedPetId } from "../../components/PetCard/PetCard";
 import { Motion } from "@motionone/solid";
 
 const [cutePets, setCutePets] = createSignal([])
 
 const LikedPets = () => {
   return (
-    <div style="overflow: hidden;">
+    <div>
       <Motion 
-        animate={{ x: [0, 100, 50] }}
-        transition={{ x: { offset: [0, 0.25, 1] } }}
+        animate={{ y: [0, 100, 50] }}
+        transition={{ y: { offset: [0, 0.25, 1] } }}
       >
         <For each={cutePets()}>
-          {pet => <PetCard pet={pet} />}
+          {pet => 
+            //pet.id == unlikedPetId() ? null : 
+            <PetCard pet={pet} />}
         </For>
       </Motion>
     </div>
-  )
+  )  
 }
 export {cutePets, setCutePets}
 export default LikedPets;

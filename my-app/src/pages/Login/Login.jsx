@@ -1,8 +1,13 @@
 import { UserPage } from "./../UserPage/UserPage";
 import styles from './Login.module.css'
 import { Motion } from "@motionone/solid";
+import { Transition } from "solid-transition-group";
+import { createSignal, Show } from "solid-js";
+
+const [show, setShow] = createSignal(true);
 
 async function SubForm() {
+  setShow(!show);
   const formDataArray = ($('#loginForm').serializeArray());
   let formDataObject = {};
   const data = formDataArray.forEach(element => {
@@ -53,6 +58,23 @@ const Login = () => {
         </div>
       </Motion>
 			<UserPage />
+      <Transition name="slide-fade">{show() && <div>First</div>}</Transition>
+      <Transition
+        onEnter={(el, done) => {
+          const a = el.animate([{ opacity: 0 }, { opacity: 1 }], {
+            duration: 600
+          });
+          a.finished.then(done);
+        }}
+        onExit={(el, done) => {
+          const a = el.animate([{ opacity: 1 }, { opacity: 0 }], {
+            duration: 600
+          });
+          a.finished.then(done);
+        }}
+      >
+        {show() && <div>Second</div>}
+      </Transition>
 		</div>
 	)
 }

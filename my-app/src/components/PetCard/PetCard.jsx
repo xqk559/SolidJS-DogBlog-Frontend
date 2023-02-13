@@ -1,6 +1,9 @@
 import { cutePets, setCutePets } from "../../pages/LikedPets/LikedPets";
 import styles from './PetCard.module.css'
-import { Motion } from "@motionone/solid";
+import { createSignal, Show } from "solid-js";
+import { Motion, Presence } from "@motionone/solid";
+
+const [unlikedPetId, setUnlikedPetId] = createSignal();
 
 const likePet = (pet) => {
   setCutePets([pet, ...cutePets()]);
@@ -8,7 +11,13 @@ const likePet = (pet) => {
 
 const unLikePet = (petId) => {
   const petState = cutePets()?.filter(item => item.id !== petId)
-  setCutePets(petState)
+
+  setUnlikedPetId(petId)
+  setUnlikedPetId(undefined)
+
+  setTimeout(() => {
+    setCutePets(petState)
+  }, 1000)
 }
 
 const petIsCute = (petId) => {
@@ -18,31 +27,62 @@ const petIsCute = (petId) => {
 
 const PetCard = ({pet}) => {
   return (
-    <Motion
-      initial={{ opacity: 0, scale: 0.6 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.6 }}
-      transition={{ duration: 0.3 }}
-    >
-      <div class="card mb-3">
-        <div class="card-header">{pet.animal_NAME} the {pet.animal_TYPE}</div>
-        <div class="card-body">
-          <p class="card-text">{pet.animal_DESCRIPTION}</p>
-        </div>
-        <div class="card-footer">
-        {petIsCute(pet.id) ? (
-            <button class={styles.unlikeButton} onclick={() => unLikePet(pet.id)}>
-              UnLike
-            </button>
-          ) : (
-            <button class={styles.likeButton} onclick={() => likePet(pet)}>
-              Like
-            </button>
-          )}
-        </div>
-      </div>
-    </Motion>
+    <Presence exitBeforeEnter>
+      <Show when={unlikedPetId() !== pet.id} >
+        <Motion
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <div class="card mb-3">
+            <div class="card-header">{pet.animal_NAME} the {pet.animal_TYPE}</div>
+            <div class="card-body">
+              <p class="card-text">{pet.animal_DESCRIPTION}</p>
+            </div>
+            <div class="card-footer">
+            {petIsCute(pet.id) ? (
+              <div>
+                <div class="container">
+                  <Presence exitBeforeEnter>
+                    <Motion
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <button class={styles.unlikeButton} onclick={() => unLikePet(pet.id)}>
+                        UnLike
+                      </button>
+                    </Motion> 
+                  </Presence>
+                </div>
+              </div>            
+              ) : (
+                <div>
+                  <div class="container">
+                    <Presence exitBeforeEnter>
+                      <Motion
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <button class={styles.likeButton} onclick={() => likePet(pet)}>
+                          Like
+                        </button>
+                      </Motion> 
+                    </Presence>
+                  </div>
+                </div>            
+              )}
+            </div>
+          </div>
+        </Motion>
+      </Show>
+    </Presence>
   )
 }
 
+export {unlikedPetId}
 export default PetCard;
