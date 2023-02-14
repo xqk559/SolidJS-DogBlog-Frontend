@@ -11,13 +11,14 @@ const likePet = (pet) => {
 
 const unLikePet = (petId) => {
   const petState = cutePets()?.filter(item => item.id !== petId)
+  const timeoutLength = (window.location.href == 'http://127.0.0.1:3000/') ? 0 : 500;
 
   setUnlikedPetId(petId)
   setUnlikedPetId(undefined)
 
   setTimeout(() => {
     setCutePets(petState)
-  }, 1000)
+  }, timeoutLength)
 }
 
 const petIsCute = (petId) => {
@@ -28,12 +29,12 @@ const petIsCute = (petId) => {
 const PetCard = ({pet}) => {
   return (
     <Presence exitBeforeEnter>
-      <Show when={unlikedPetId() !== pet.id} >
+      <Show when={unlikedPetId() !== pet.id || window.location.href == 'http://127.0.0.1:3000/'} >
         <Motion
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1 }}
+          exit={{ opacity: 0, y: [0, -100] }}
+          transition={{ duration: .5 }}
         >
           <div class="card mb-3">
             <div class="card-header">{pet.animal_NAME} the {pet.animal_TYPE}</div>

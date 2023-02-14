@@ -8,10 +8,7 @@ const Home = () => {
     <div>
       <For each={pets()}>
           {(pet => 
-            <Motion 
-              animate={{ y: [0, 100, 50] }}
-              transition={{ y: { offset: [0, 0.25, 1] } }}
-            >
+            <Motion animate={{ y: [0, 100, 50] }}>
               <PetCard pet={pet} />
             </Motion>
           )}

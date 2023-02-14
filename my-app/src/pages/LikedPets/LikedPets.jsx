@@ -7,14 +7,9 @@ const [cutePets, setCutePets] = createSignal([])
 const LikedPets = () => {
   return (
     <div>
-      <Motion 
-        animate={{ y: [0, 100, 50] }}
-        transition={{ y: { offset: [0, 0.25, 1] } }}
-      >
+      <Motion animate={{ y: [0, 100] }} >
         <For each={cutePets()}>
-          {pet => 
-            //pet.id == unlikedPetId() ? null : 
-            <PetCard pet={pet} />}
+          {pet => <PetCard pet={pet} />}
         </For>
       </Motion>
     </div>
