@@ -1,5 +1,5 @@
-import { createSignal, For, createEffect } from "solid-js";
-import PetCard, { unlikedPetId } from "../../components/PetCard/PetCard";
+import { createSignal, For } from "solid-js";
+import PetCard from "../../components/PetCard/PetCard";
 import { Motion } from "@motionone/solid";
 
 const [cutePets, setCutePets] = createSignal([])
@@ -15,5 +15,6 @@ const LikedPets = () => {
     </div>
   )  
 }
+
 export {cutePets, setCutePets}
 export default LikedPets;

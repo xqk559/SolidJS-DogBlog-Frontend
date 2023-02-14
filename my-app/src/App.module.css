@@ -1,4 +1,11 @@
 .App {
+  height: 100%;
   text-align: center;
-  color: blue;
+}
+
+.Page {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 0 0 200px;
+  position: relative;
 }

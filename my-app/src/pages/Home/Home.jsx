@@ -7,11 +7,11 @@ const Home = () => {
   return (
     <div>
       <For each={pets()}>
-          {(pet => 
-            <Motion animate={{ y: [0, 100, 50] }}>
-              <PetCard pet={pet} />
-            </Motion>
-          )}
+        {(pet => 
+          <Motion animate={{ y: [0, 100] }}>
+            <PetCard pet={pet} />
+          </Motion>
+        )}
       </For>
     </div>
   )
