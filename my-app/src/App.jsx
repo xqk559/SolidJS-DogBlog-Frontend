@@ -5,34 +5,28 @@ import Home from "./pages/Home/Home";
 import LikedPets from "./pages/LikedPets/LikedPets";
 import Login from "./pages/Login/Login";
 import UserPage from "./pages/UserPage/UserPage";
-import { createEffect, createSignal } from "solid-js";
 import styles from './App.module.css'
+import { QueryClientProvider, QueryClient } from '@tanstack/solid-query'
 
-const [pets, setPets] = createSignal([])
-
-createEffect(async () => {
-  const response = await fetch(`http://localhost:8080/api/pets`)
-  const responseJson = await response.json() 
-  setPets(responseJson)
-})
+const queryClient = new QueryClient()
 
 function App() {
   return (
-    <div class="container">
-      <div class={styles.Page}>
-        <Header />
-        <Routes>
-          <Route element={<Home />} end path='/' />
-          <Route element={<LikedPets />} path='/Likedpets' />
-          <Route element={<Login />} path='/Login' />
-          <Route element={<UserPage />} path='/UserPage' />
-        </Routes>
-        <Footer />
+    <QueryClientProvider client={queryClient}>
+      <div class="container">
+        <div class={styles.Page}>
+          <Header />
+          <Routes>
+            <Route element={<Home />} end path='/' />
+            <Route element={<LikedPets />} path='/Likedpets' />
+            <Route element={<Login />} path='/Login' />
+            <Route element={<UserPage />} path='/UserPage' />
+          </Routes>
+          <Footer />
+        </div>
       </div>
-    </div>
+    </QueryClientProvider>
   );
 }
-
-export {pets}
 
 export default App;
